@@ -7,23 +7,23 @@ import Shelf from './components/Shelf'
 class BooksApp extends React.Component {
   state = {
     books: [],
-    wtr: []
+    wantToRead: [],
+    currentlyReading: [],
+    read: []
   }
 
   componentDidMount() {
     BooksAPI.getAll().then((books) => {
-      this.setState({ books: books,
+      this.setState({
+        books: books,
+        wantToRead: books.filter((book) => book.shelf === "wantToRead"),
+        currentlyReading: books.filter((book) => book.shelf === "currentlyReading"),
+        read: books.filter((book) => book.shelf === "read")
       })
     })
   }
 
-
-
-
-
   render() {
-    console.log(this.state.wtr);
-    console.log(this.state.books);
     return (
       <div>
         <div className="list-books-content">
@@ -31,16 +31,9 @@ class BooksApp extends React.Component {
             <div className="list-books-title">
               <h1>MyReads</h1>
             </div>
-            <Shelf shelf="Currently Reading" />
-            <Shelf shelf="Want to Read" />
-            <Shelf shelf="Read" />
-            <ol>
-              {this.state.books.map((book) => (
-                <li key={book.id}>
-                  <Book bookDetails={book} />
-                </li>
-              ))}
-            </ol>
+            <Shelf shelf="Currently Reading" booksOnShelf={this.state.currentlyReading} />
+            <Shelf shelf="Want to Read" booksOnShelf={this.state.wantToRead} />
+            <Shelf shelf="Read" booksOnShelf={this.state.read} />
           </div>
         </div>
         <div className="open-search">

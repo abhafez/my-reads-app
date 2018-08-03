@@ -1,12 +1,10 @@
 import React from 'react'
 
 class Book extends React.Component {
-  // state = {
-  //   read = [],
-  //   wantToRead = [],
-  //   currentlyReading = []
-  // }
-
+  state = {
+    currentShelf: this.props.bookDetails.shelf,
+    newShelf: ''
+  }
   render() {
     return (
       <div className="book">
