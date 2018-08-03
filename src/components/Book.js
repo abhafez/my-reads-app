@@ -1,16 +1,18 @@
 import React from 'react'
 
 class Book extends React.Component {
+  // state = {
+  //   read = [],
+  //   wantToRead = [],
+  //   currentlyReading = []
+  // }
 
   render() {
-    const booksDetails = this.props
-    console.log(booksDetails);
-
     return (
       <div className="book">
         <div className="book-top">
-          <div className="book-cover" style={{ width: 128, height: 192, 
-            backgroundImage: `url(${booksDetails['bookDetails'].imageLinks.smallThumbnail})`}}></div>
+          <div className="book-cover" style={{ width: 128, height: 192,
+            backgroundImage: `url(${this.props.bookDetails.imageLinks.smallThumbnail})`}}></div>
           <div className="book-shelf-changer">
             <select>
               <option value="move" disabled>Move to...</option>
@@ -21,8 +23,8 @@ class Book extends React.Component {
             </select>
           </div>
         </div>
-        <div className="book-title">{booksDetails['bookDetails'].title}</div>
-        <div className="book-authors">{booksDetails['bookDetails'].authors}</div>
+        <div className="book-title">{this.props.bookDetails.title}</div>
+        <div className="book-authors">{this.props.bookDetails.authors}</div>
       </div>
     );
   }
