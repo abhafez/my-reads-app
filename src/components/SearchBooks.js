@@ -3,14 +3,21 @@ import {BrowserRouter} from 'react-router-dom'
 import {Link} from 'react-router-dom'
 
 class SearchBooks extends React.Component {
-  state = {}
+  state = {
+    query: ''
+  }
+
+  updateQuery = (query) => {
+    this.setState({ query: query.trim() })
+  }
+
   render() {
     return (
       <div className="search-books">
         <div className="search-books-bar">
-          <Link className="close-search" to='/search'>Close</Link>
+          <Link className="close-search" to='/'>Close</Link>
           <div className="search-books-input-wrapper">
-            <input type="text" placeholder="Search by title or author" />
+            <input type="text" placeholder="Search by title or author" value={this.state.query}/>
           </div>
         </div>
         <div className="search-books-results">
