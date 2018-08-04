@@ -3,8 +3,10 @@ import * as BooksAPI from './BooksAPI'
 import './App.css'
 import { Route, Link} from 'react-router-dom'
 import SearchBooks from './components/SearchBooks';
-import Book from './components/Book'
 import Shelf from './components/Shelf'
+import Icon from 'react-icons-kit';
+import { book } from 'react-icons-kit/fa/book'
+
 class BooksApp extends React.Component {
   state = {
     books: [],
@@ -32,7 +34,7 @@ class BooksApp extends React.Component {
             <div className="list-books-content">
               <div className="list-books">
                 <div className="list-books-title">
-                  <h1>MyReads</h1>
+                  <h1><Icon icon={book} className='icon'/>MyReads</h1>
                 </div>
                 <Shelf shelf="Currently Reading" booksOnShelf={this.state.currentlyReading} />
                 <Shelf shelf="Want to Read" booksOnShelf={this.state.wantToRead} />

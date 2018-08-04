@@ -1,5 +1,7 @@
 import React from 'react'
 
+
+
 class Book extends React.Component {
   state = {
     currentShelf: this.props.bookDetails.shelf,
@@ -14,10 +16,10 @@ class Book extends React.Component {
           <div className="book-shelf-changer">
             <select>
               <option value="move" disabled>Move to...</option>
-              <option value="currentlyReading">Currently Reading</option>
-              <option value="wantToRead">Want to Read</option>
-              <option value="read">Read</option>
-              <option value="none">None</option>
+              <option id='currentlyReading' value="currentlyReading">Currently Reading</option>
+              <option id='wantToRead' value="wantToRead">Want to Read</option>
+              <option id='read' value="read">Read</option>
+              {/* <option id='' value="none">None</option> */}
             </select>
           </div>
         </div>

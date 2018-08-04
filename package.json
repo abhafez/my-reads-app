@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@fortawesome/react-fontawesome": "0.1.0-11",
     "autoprefixer": "7.1.6",
     "babel-core": "6.26.0",
     "babel-eslint": "7.2.3",
@@ -45,6 +46,7 @@
     "whatwg-fetch": "2.0.3"
   },
   "devDependencies": {
+    "react-icons-kit": "^1.1.7",
     "yarn": "^1.9.2"
   },
   "scripts": {

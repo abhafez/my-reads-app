@@ -1,3 +1,12 @@
+
+colors {
+  color1: rgba(234, 215, 209, 1);
+  color2: rgb(235, 182, 208);
+  color3: rgba(123, 80, 111, 1);
+  color4: rgba(137, 49, 104, 1);
+  color5: rgba(31, 26, 56, 1);
+}
+
 html, body, .root {
   height: 100%;
 }
@@ -5,20 +14,21 @@ body {
   line-height: 1.5;
 }
 body, .app {
-  background: white;
+  background: rgba(234, 215, 209, 1);
 }
 
 /* main page */
 
 .list-books-title {
   padding: 10px 0;
-  background: #2e7c31;
+  background: rgba(31, 26, 56, 1);
   text-align: center;
 }
 .list-books-title h1 {
-  font-weight: 400;
+  font-family: 'Russo One', sans-serif;
+  /* font-weight: 400; */
   margin: 0;
-  color: white;
+  color: rgba(234, 215, 209, 1);
 }
 
 .list-books-content {
@@ -38,6 +48,7 @@ body, .app {
 
 .bookshelf-title {
   border-bottom: 1px solid #dedede;
+  color: rgba(31, 26, 56, 1);
 }
 .bookshelf-books {
   text-align: center;
@@ -54,8 +65,8 @@ body, .app {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: #2e7d32;
-  background-image: url('./icons/add.svg');
+  background: rgba(31, 26, 56, 1);
+  background-image: url('./icons/search.svg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: 28px;
@@ -92,7 +103,7 @@ body, .app {
   left: 15px;
   width: 50px;
   height: 53px;
-  background: white;
+  background: rgba(123, 80, 111, 1);
   background-image: url('./icons/arrow-back.svg');
   background-position: center;
   background-repeat: no-repeat;
@@ -129,9 +140,10 @@ body, .app {
 }
 .book-title {
   margin-top: 10px;
+  color: rgba(31, 26, 56, 1);
 }
 .book-authors {
-  color: #999;
+  color: rgba(123, 80, 111, 1);
 }
 
 .book-top {
@@ -148,7 +160,7 @@ body, .app {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: #60ac5d;
+  background: rgba(31, 26, 56, 1);
   background-image: url('./icons/arrow-drop-down.svg');
   background-repeat: no-repeat;
   background-position: center;
@@ -172,4 +184,8 @@ body, .app {
   padding: 20px 10px 0;
   text-align: center;
   font-size: 0.8em;
+}
+
+.icon {
+  color: rgba(234, 215, 209, 1);
 }
