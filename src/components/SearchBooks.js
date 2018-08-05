@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import * as BooksAPI from '../BooksAPI'
 import Book from './Book'
+import AnimateOnChange from 'react-animate-on-change'
 
 class SearchBooks extends React.Component {
   state = {
@@ -11,11 +12,12 @@ class SearchBooks extends React.Component {
   }
 
   updateQuery = (query) => {
-    this.setState({ query: query.trim() })
+    this.setState({ query: query.trim() , loading: true})
     BooksAPI.search(query, 20).then((books) => (
       this.setState({ searchResults: books , loading: false})
     ))
   }
+
 
   render() {
 
@@ -35,7 +37,7 @@ class SearchBooks extends React.Component {
         <div className='search-books-results'>
           <ol className='books-grid'>
             {
-              (this.state.loading) ? <p>Loading</p> : 
+              (this.state.loading) ? <p>Loading</p> :
               this.state.searchResults.map((book) => (
                 <li>
                   <Book bookDetails={book} />

@@ -1,5 +1,6 @@
 import React from 'react'
 import * as BooksAPI from '../BooksAPI'
+import $ from 'jquery'
 class Book extends React.Component {
   constructor(props) {
     super(props);
@@ -12,12 +13,13 @@ class Book extends React.Component {
 
   handleChange(event) {
     this.setState({value: event.target.value, bookID: this.props.bookDetails.id});
+    $(`#${this.props.bookDetails.id}`).fadeOut("slow")
     BooksAPI.update(this.props.bookDetails, event.target.value)
   }
 
   render() {
     return (
-      <div className="book">
+      <div className="book" id={this.props.bookDetails.id}>
         <div className="book-top">
           <div className="book-cover" style={{
             width: 128, height: 192,
