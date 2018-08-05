@@ -6,16 +6,13 @@ class Book extends React.Component {
     super(props);
     this.state = {
       value: this.props.bookDetails.shelf,
-      bookID: this.props.bookDetails.id
+      bookID: this.props.bookDetails.id,
     }
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange(event) {
-    this.setState({value: event.target.value, bookID: this.props.bookDetails.id});
-    $(`#${this.props.bookDetails.id}`).fadeOut("slow")
-    BooksAPI.update(this.props.bookDetails, event.target.value)
-  }
+
+  
 
   render() {
     return (
@@ -41,6 +38,12 @@ class Book extends React.Component {
       </div>
     );
   }
+  handleChange(event) {
+    this.setState({value: event.target.value, bookID: this.props.bookDetails.id})
+    this.props.page === 'main' ? $(`#${this.props.bookDetails.id}`).fadeOut("slow"): null
+    BooksAPI.update(this.props.bookDetails, event.target.value)
+  }
+
 }
 
 export default Book;
