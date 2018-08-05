@@ -4,19 +4,16 @@ import * as BooksAPI from '../BooksAPI'
 import Book from './Book'
 
 class SearchBooks extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      query: '',
-      searchResults: []
-    }
-    this.updateQuery = this.updateQuery.bind(this);
+  state = {
+    query: '',
+    searchResults: [],
+    loading: true
   }
 
   updateQuery = (query) => {
     this.setState({ query: query.trim() })
-    BooksAPI.search(this.state.query).then((books) => (
-      this.setState({ searchResults: books })
+    BooksAPI.search(query, 20).then((books) => (
+      this.setState({ searchResults: books , loading: false})
     ))
   }
 
@@ -37,11 +34,14 @@ class SearchBooks extends React.Component {
         </div>
         <div className='search-books-results'>
           <ol className='books-grid'>
-            {/* {foundBooks.map((book) => (
-              <li draggable="true" key={book.id}>
-                <Book bookDetails={book} />
-              </li>
-            ))} */}
+            {
+              (this.state.loading) ? <p>Loading</p> : 
+              this.state.searchResults.map((book) => (
+                <li>
+                  <Book bookDetails={book} />
+                </li>
+              ))
+            }
           </ol>
         </div>
       </div>
