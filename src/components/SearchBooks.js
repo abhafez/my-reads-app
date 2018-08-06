@@ -2,22 +2,28 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import * as BooksAPI from '../BooksAPI'
 import Book from './Book'
-import AnimateOnChange from 'react-animate-on-change'
 
 class SearchBooks extends React.Component {
   state = {
     query: '',
     searchResults: [],
-    loading: true
+    loading: true,
+    isMounted: false
   }
 
   updateQuery = (query) => {
-    this.setState({ query: query.trim() , loading: true})
-    BooksAPI.search(query, 20).then((books) => (
-      this.setState({ searchResults: books , loading: false})
-    ))
+    this.setState({ query: query.trim(), loading: true })
+    if (this.state.isMounted === false) {
+      this.setState({ isMounted: true })
+      BooksAPI.search(query, 20).then((books) => (
+        this.setState({ searchResults: books, loading: false })
+      ))
+    }
   }
 
+  componentWillUnmount() {
+    this.setState({ isMounted: false })
+  }
 
   render() {
 
@@ -38,11 +44,11 @@ class SearchBooks extends React.Component {
           <ol className='books-grid'>
             {
               (this.state.loading) ? <p>Loading</p> :
-              this.state.searchResults.map((book) => (
-                <li>
-                  <Book bookDetails={book} />
-                </li>
-              ))
+                this.state.searchResults.map((book) => (
+                  <li key={book.id}>
+                    <Book bookDetails={book} />
+                  </li>
+                ))
             }
           </ol>
         </div>

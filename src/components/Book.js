@@ -11,8 +11,11 @@ class Book extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-
-  
+  handleChange(event) {
+    this.setState({ value: event.target.value, bookID: this.props.bookDetails.id })
+    this.props.page === 'main' ? $(`#${this.props.bookDetails.id}`).fadeOut("slow") : null
+    BooksAPI.update(this.props.bookDetails, event.target.value)
+  }
 
   render() {
     return (
@@ -21,7 +24,7 @@ class Book extends React.Component {
           <div className="book-cover" style={{
             width: 128, height: 192,
             backgroundImage:
-            `url(${this.props.bookDetails.imageLinks.smallThumbnail})`
+              `url(${this.props.bookDetails.imageLinks.smallThumbnail})`
           }}></div>
           <div className="book-shelf-changer">
             <select value={this.state.value} onChange={this.handleChange}>
@@ -37,11 +40,6 @@ class Book extends React.Component {
         <div className="book-authors">{this.props.bookDetails.authors}</div>
       </div>
     );
-  }
-  handleChange(event) {
-    this.setState({value: event.target.value, bookID: this.props.bookDetails.id})
-    this.props.page === 'main' ? $(`#${this.props.bookDetails.id}`).fadeOut("slow"): null
-    BooksAPI.update(this.props.bookDetails, event.target.value)
   }
 
 }

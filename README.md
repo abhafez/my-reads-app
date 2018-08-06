@@ -1,6 +1,6 @@
 # MyReads Project
 
-The starter template for the final assessment project for Udacity's React Fundamentals course. this is the seventh project in udacity Nanodegree Program
+This project is the 7th project in the Nanodegree program which tests react knowledge.
 
 ## TL;DR
 
