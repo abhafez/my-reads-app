@@ -18,16 +18,20 @@ class Book extends React.Component {
   }
 
   render() {
+    const sampleURL = `../icons/no-cover-book.png`
     return (
       <div className="book" id={this.props.bookDetails.id}>
         <div className="book-top">
           <div className="book-cover" style={{
-            width: 128, height: 192,
+            width: 128,
+            height: 192,
             backgroundImage:
-              `url(${this.props.bookDetails.imageLinks.smallThumbnail})`
+              `url(${this.props.bookDetails.imageLinks ?
+                this.props.bookDetails.imageLinks.smallThumbnail
+                 : sampleURL})`
           }}></div>
           <div className="book-shelf-changer">
-            <select value={this.state.value} onChange={this.handleChange}>
+            <select value={this.state.value || 'none'} onChange={this.handleChange}>
               <option value="move" disabled>Move to...</option>
               <option value="currentlyReading">Currently Reading</option>
               <option value="wantToRead">Want to Read</option>
@@ -37,7 +41,7 @@ class Book extends React.Component {
           </div>
         </div>
         <div className="book-title">{this.props.bookDetails.title}</div>
-        <div className="book-authors">{this.props.bookDetails.authors}</div>
+        <div className="book-authors">{this.props.bookDetails.authors || "Unknown"}</div>
       </div>
     );
   }
