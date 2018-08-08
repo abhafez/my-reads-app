@@ -180,3 +180,8 @@ body, .app {
 .icon {
   color: rgba(234, 215, 209, 1);
 }
+
+.search-area {
+  font-size: 3em;
+  font-family: 'Russo One', sans-serif;
+}
